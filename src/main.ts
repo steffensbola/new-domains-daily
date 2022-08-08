@@ -3,4 +3,4 @@ import { updateWhoisDsNewlyRegisteredDomains } from "./whoisdsNewly";
 
 updateWhoisDsNewlyRegisteredDomains();
 
-//updateDnPediaDaily();
+updateDnPediaDaily();
