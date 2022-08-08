@@ -1,4 +1,4 @@
-import axios, { Axios } from "axios";
+import axios from "axios";
 import { createWriteStream } from "fs";
 
 export async function downloadFile(fileUrl: string, outputLocationPath: string) {

@@ -7,7 +7,7 @@ import { downloadFile } from './downloadFile';
 
 const base_url = "https://www.whoisds.com/newly-registered-domains";
 const content_url_match = "whois-database/newly-registered-domains/";
-const output_folder = "data/";
+const output_folder = "data/whoisds/";
 
 export const updateWhoisDsNewlyRegisteredDomains = async () => {
     const today = DateTime.local();
