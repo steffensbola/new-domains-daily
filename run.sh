@@ -21,8 +21,10 @@ while read -r line; do (unzip -o -d "$(basename "$line" .zip)" "$line"); done < 
 echo "Removing temporary Zip files..."
 rm *.zip
 
+date --iso-8601=seconds > last_update.txt
 cd ..
 echo "Done!"
+
 
 echo "Updating repo..."
 
