@@ -7,8 +7,10 @@ npm i
 echo "Installing dependencies... Done"
 
 echo "Running scripts..."
-tsc src/main.ts
-node src/main.js
+npx ts-node src/main.ts -y
+## alternative way:
+# tsc src/main.ts
+# node src/main.js
 echo "Running scripts... Done"
 
 echo "Unzipping..."
