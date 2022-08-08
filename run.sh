@@ -1,5 +1,6 @@
 echo "Starting..."
 git fetch
+git checkout main
 git pull
 
 echo "Installing dependencies..."
@@ -25,7 +26,7 @@ echo "Done!"
 
 echo "Updating repo..."
 
-git add -A && git commit -m "Updated files"
+git add -A && git commit -m "Updated files via script" 
 git push
 echo "Updating repo... Done"
 
