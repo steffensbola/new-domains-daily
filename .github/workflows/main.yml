@@ -4,7 +4,7 @@ name: Cron based data update for "new-domains-daily"
 on:
   # Triggers the workflow every 6 hours
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "*/2 * * * *"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -17,4 +17,4 @@ jobs:
     steps:
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: ./run.sh
+        run: ../../run.sh
