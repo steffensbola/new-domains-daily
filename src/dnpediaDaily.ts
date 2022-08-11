@@ -102,16 +102,18 @@ export const updateDnPediaDaily = async () => {
   );
 
   Promise.allSettled(promises).then((results) => {
-    results.forEach((response) => {
+    for (let i = results.length - 1; i--;) {
+      const response = results[i];
       if (response.status === 'fulfilled') {
-        db = db.concat(response.value?.data?.rows ?? []);
-        success.concat(response.value?.config?.url);
-        saveToFile(JSON.stringify(db), 'data/dnpedia/' + today.toISO().split('T')[0] + '.json');
+        try {
+          db = db.concat(response.value?.data?.rows ?? []);
+          success.concat(response.value?.config?.url);
+        } finally { }
       } else {
         error.concat(response.reason?.config?.url);
       }
-    });
-
+    }
+    saveToFile(JSON.stringify(db), 'data/dnpedia/' + today.toISO().split('T')[0] + '.json');
     saveToFile(JSON.stringify(error), 'data/dnpedia/' + today.toISO().split('T')[0] + '.error.txt');
     saveToFile(JSON.stringify(success), 'data/dnpedia/' + today.toISO().split('T')[0] + '.success.txt');
 
