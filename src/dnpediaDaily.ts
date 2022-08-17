@@ -107,10 +107,10 @@ export const updateDnPediaDaily = async () => {
       if (response.status === 'fulfilled') {
         try {
           db = db.concat(response.value?.data?.rows ?? []);
-          success.concat(response.value?.config?.url);
+          success.concat(urls[i]);
         } finally { }
       } else {
-        error.concat(response.reason?.config?.url);
+        error.concat(urls[i]);
       }
     }
     saveToFile(JSON.stringify(db), 'data/dnpedia/' + today.toISO().split('T')[0] + '.json');
