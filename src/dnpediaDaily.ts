@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { DateTime } from 'luxon';
 import fs from 'fs';
+import { range, saveToFile } from './utils';
 
 const BASE_URL_FOR_TLD =
   'https://dnpedia.com/tlds/ajax.php?cmd=tldlist&columns=id,zoneuc,active_in_zone,current_add_count,last_processed,zone,id,&_search=false&rows=1000&page=[PAGE]&sidx=active_in_zone&sord=desc';
@@ -16,16 +17,6 @@ interface TLD {
   zone: string;
 }
 
-const saveToFile = (data: string, filename: string) => {
-  fs.writeFile(filename, data, (err) => {
-    if (err) {
-      console.log(err);
-    }
-  }
-  );
-}
-
-const range = (start, end) => Array.from({ length: end - start }, (v, k) => k + start);
 
 function delay(t: number, data) {
   return new Promise(resolve => {
@@ -107,10 +98,10 @@ export const updateDnPediaDaily = async () => {
       if (response.status === 'fulfilled') {
         try {
           db = db.concat(response.value?.data?.rows ?? []);
-          success.concat(urls[i]);
+          success.push(urls[i]);
         } finally { }
       } else {
-        error.concat(urls[i]);
+        error.push(urls[i]);
       }
     }
     saveToFile(JSON.stringify(db), 'data/dnpedia/' + today.toISO().split('T')[0] + '.json');

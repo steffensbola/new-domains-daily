@@ -1,7 +1,7 @@
 // https://www.whoisds.com/newly-registered-domains
 // sample download url = https://www.whoisds.com//whois-database/newly-registered-domains/MjAyMi0wNy0yNy56aXA=/nrd
 import axios from "axios";
-import { getLinks } from './utils';
+import { getLinks, saveToFile } from './utils';
 import { DateTime } from 'luxon';
 import { downloadFile } from './downloadFile';
 
@@ -26,6 +26,7 @@ export const updateWhoisDsNewlyRegisteredDomains = async () => {
 
     Promise.allSettled(promises).then(results => {
         console.log("All downloads completed");
+        saveToFile(today.toISO(), output_folder + 'last_update.txt');
     }).catch(err => {
         console.log("Error downloading files", err);
     });
