@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { DateTime } from 'luxon';
-import fs from 'fs';
 import { range, saveToFile } from './utils';
 
 const BASE_URL_FOR_TLD =
@@ -81,8 +80,8 @@ export const updateDnPediaDaily = async () => {
   });
 
   // custom headers must be set for each request
-  const promises = urls.map((u) =>
-    axios.get(u, {
+  const promises = urls.map(async (u) => {
+    return await axios.get(u, {
       headers: {
         'X-Requested-With': 'XMLHttpRequest',
         Referer: 'https://dnpedia.com/tlds/daily.php',
@@ -90,11 +89,12 @@ export const updateDnPediaDaily = async () => {
       },
       timeout: 100000,
     })
-  );
+  });
 
-  Promise.allSettled(promises).then((results) => {
+  await Promise.allSettled(promises).then((results) => {
+    console.log(results)
     for (let i = results.length - 1; i--;) {
-      const response = results[i];
+      let response = results[i];
       if (response.status === 'fulfilled') {
         try {
           db = db.concat(response.value?.data?.rows ?? []);
@@ -104,6 +104,7 @@ export const updateDnPediaDaily = async () => {
         error.push(urls[i]);
       }
     }
+
     saveToFile(JSON.stringify(db), 'data/dnpedia/' + today.toISO().split('T')[0] + '.json');
     saveToFile(JSON.stringify(error), 'data/dnpedia/' + today.toISO().split('T')[0] + '.error.txt');
     saveToFile(JSON.stringify(success), 'data/dnpedia/' + today.toISO().split('T')[0] + '.success.txt');

@@ -1,6 +1,7 @@
 import { updateDnPediaDaily } from "./dnpediaDaily";
 import { updateWhoisDsNewlyRegisteredDomains } from "./whoisdsNewly";
 
-updateWhoisDsNewlyRegisteredDomains();
-
-updateDnPediaDaily();
+setTimeout(async () => {
+    await updateWhoisDsNewlyRegisteredDomains();
+    await updateDnPediaDaily();
+}, 1);
