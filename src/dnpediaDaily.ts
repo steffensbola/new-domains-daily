@@ -81,7 +81,7 @@ export const updateDnPediaDaily = async () => {
 
   // custom headers must be set for each request
   const promises = urls.map(async (u) => {
-    return await axios.get(u, {
+    return axios.get(u, {
       headers: {
         'X-Requested-With': 'XMLHttpRequest',
         Referer: 'https://dnpedia.com/tlds/daily.php',
@@ -92,7 +92,6 @@ export const updateDnPediaDaily = async () => {
   });
 
   await Promise.allSettled(promises).then((results) => {
-    console.log(results)
     for (let i = results.length - 1; i--;) {
       let response = results[i];
       if (response.status === 'fulfilled') {
