@@ -1,4 +1,4 @@
-jobs: Update on push
+jobs: 
 on:
   push:
     branches: [ main ]
