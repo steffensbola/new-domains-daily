@@ -1,7 +1,9 @@
 echo "Starting..."
 cd ../../
+
+ls
 echo "Installing dependencies..."
-npm ci
+npm i
 echo "Installing dependencies... Done"
 
 echo "Running scripts..."
