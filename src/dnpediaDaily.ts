@@ -78,7 +78,7 @@ export const updateDnPediaDaily = async () => {
       });
     });
   });
-
+  console.log(urls)
   // custom headers must be set for each request
   const promises = urls.map(async (u) => {
     return axios.get(u, {
