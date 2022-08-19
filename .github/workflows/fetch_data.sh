@@ -1,5 +1,5 @@
 echo "Starting..."
-cd ../../
+cd ../
 
 ls
 echo "Installing dependencies..."
