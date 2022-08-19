@@ -1,7 +1,9 @@
 name: Fetch new data
+# Controls when the workflow will run
 on:
-  push:
-    branches: [ main ]
+  # Triggers the workflow every 6 hours
+  schedule:
+    - cron: "* */6 * * *"
 
 
 jobs:
