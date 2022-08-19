@@ -11,7 +11,7 @@ data/dnpedia (as a json file, very unreliable)
 ``` 
 
 This repo is updated using a cron schedule:  
-[![Cron based data update for "new-domains-daily"](https://github.com/steffensbola/new-domains-daily/actions/workflows/daily-update.yml/badge.svg?event=check_run)](https://github.com/steffensbola/new-domains-daily/actions/workflows/daily-update.yml)
+[![Fetch new data](https://github.com/steffensbola/new-domains-daily/actions/workflows/daily-update.yml/badge.svg)](https://github.com/steffensbola/new-domains-daily/actions/workflows/daily-update.yml)
 
 
 Run it at your own machine:
