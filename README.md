@@ -6,12 +6,12 @@ This repo does not intend to provide whois data.
   
 Data is avilable in:  
 ```
-data/whoisds (as a txt file, domains only)
+data/whoisds (as a txt file, domains only) *whoisdownload.com is used as a fallback
 data/dnpedia (as a json file, very unreliable)
 ``` 
 
-This repo is updated using a cron schedule:
-[![Cron based data update for "new-domains-daily"](https://github.com/steffensbola/new-domains-daily/actions/workflows/main.yml/badge.svg?event=check_run)](https://github.com/steffensbola/new-domains-daily/actions/workflows/main.yml)
+This repo is updated using a cron schedule:  
+[![Cron based data update for "new-domains-daily"](https://github.com/steffensbola/new-domains-daily/actions/workflows/daily-update.yml/badge.svg?event=check_run)](https://github.com/steffensbola/new-domains-daily/actions/workflows/daily-update.yml)
 
 
 Run it at your own machine:
