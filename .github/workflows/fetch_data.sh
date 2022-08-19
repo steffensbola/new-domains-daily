@@ -1,11 +1,7 @@
 echo "Starting..."
 cd ../../
-git fetch
-git checkout main
-git pull
-
 echo "Installing dependencies..."
-npm i
+npm ci
 echo "Installing dependencies... Done"
 
 echo "Running scripts..."
@@ -26,11 +22,3 @@ date --iso-8601=seconds > last_update.txt
 cd ..
 echo "Done!"
 
-
-echo "Updating repo..."
-
-git add -A && git commit -m "Updated files via script" 
-git push
-echo "Updating repo... Done"
-
-echo "Press any key to exit..."
