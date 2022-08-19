@@ -3,5 +3,5 @@ import { updateWhoisDsNewlyRegisteredDomains } from "./whoisdsNewly";
 
 setTimeout(async () => {
     await updateWhoisDsNewlyRegisteredDomains();
-    await updateDnPediaDaily();
+    //await updateDnPediaDaily();
 }, 1);
