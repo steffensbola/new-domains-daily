@@ -6,7 +6,7 @@ This repo does not intend to provide whois data.
   
 Data is avilable in:  
 ```
-data/whoisds (as a txt file, domain only)
+data/whoisds (as a txt file, domains only)
 data/dnpedia (as a json file, very unreliable)
 ``` 
 
