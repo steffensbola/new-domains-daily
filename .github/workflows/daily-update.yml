@@ -1,22 +1,25 @@
-jobs: 
+name: Fetch new data
 on:
   push:
     branches: [ main ]
-runs-on: ubuntu-latest
 
-steps:
-- uses: actions/checkout@v1
-- name: run fetch_data.sh
-  run: bash ./.github/workflows/fetch_data.sh
-- name: switching from HTTPS to SSH
-  run: git remote set-url origin ${{ secrets.ssh }}
-- name: check for changes
-  run: git status
-- name: stage changed files
-  run: git add .
-- name: commit changed files
-  run: git commit -m "Auto updating data"
-- name: fetch from master
-  run: git fetch origin master
-- name: push code to master
-  run: git push origin HEAD:master
+jobs: 
+
+  runs-on: ubuntu-latest
+
+  steps:
+  - uses: actions/checkout@v1
+  - name: run fetch_data.sh
+    run: bash ./.github/workflows/fetch_data.sh
+  - name: switching from HTTPS to SSH
+    run: git remote set-url origin ${{ secrets.ssh }}
+  - name: check for changes
+    run: git status
+  - name: stage changed files
+    run: git add .
+  - name: commit changed files
+    run: git commit -m "Auto updating data"
+  - name: fetch from master
+    run: git fetch origin master
+  - name: push code to master
+    run: git push origin HEAD:master
