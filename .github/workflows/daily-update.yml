@@ -11,8 +11,6 @@ jobs:
   - uses: actions/checkout@v1
   - name: run fetch_data.sh
     run: bash ./.github/workflows/fetch_data.sh
-  - name: echo secrets
-    run: echo ${{ secrets.SSH }}
   - name: switching from HTTPS to SSH
     run: git remote set-url origin ${{ secrets.SSH }}
   - name: check for changes
