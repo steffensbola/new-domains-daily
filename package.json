@@ -32,6 +32,6 @@
   "dependencies": {
     "axios": "^0.27.2",
     "fs": "^0.0.1-security",
-    "luxon": "^3.0.1"
+    "luxon": "^3.2.1"
   }
 }
