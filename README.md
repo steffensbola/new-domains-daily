@@ -19,5 +19,4 @@ Run it at your own machine:
 ./run.sh
 ```
 
-## Todo:  
-[ ] Remove listing on WHOISDS. It is unnecessary. Links follow a pattern. Names are encoded to base64 (Ex. MjAyMi0wOC0yMS56aXA equals to 2022-08-21.zip)
+
