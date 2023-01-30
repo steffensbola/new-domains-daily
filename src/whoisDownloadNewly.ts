@@ -9,6 +9,11 @@ const base_url = "https://www.whoisdownload.com/newly-registered-domains";
 const content_url_match = "download-panel/free-download-file/";
 const output_folder = "data/whoisds/";
 
+const todayAsBase64 = () => {
+  const today = DateTime.local();
+  return Buffer.from(today.toISODate()).toString("base64");
+};
+
 export const updateWhoisDownloadNewlyRegisteredDomains = async () => {
   const today = DateTime.local();
   console.log(
@@ -21,20 +26,27 @@ export const updateWhoisDownloadNewlyRegisteredDomains = async () => {
     .reverse();
   console.log("Download links:\n", downloadLinks);
 
-  let promises = downloadLinks.map(async (cLink, index) => {
-    let day = today.minus({ days: index });
-    return await downloadFile(
-      cLink.trim(),
-      output_folder + day.toFormat("yyyy-MM-dd") + ".zip"
-    );
-  });
+  if (downloadLinks.length === 0)
+    return;
 
-  Promise.allSettled(promises)
-    .then((results) => {
-      console.log("All downloads completed");
-      saveToFile(today.toISO(), output_folder + "last_update.txt");
-    })
-    .catch((err) => {
-      console.log("Error downloading files", err);
+  if (downloadLinks.find((link) => link.includes(todayAsBase64()))) {
+
+    let promises = downloadLinks.map(async (cLink, index) => {
+      let day = today.minus({ days: index });
+      return await downloadFile(
+        cLink.trim(),
+        output_folder + day.toFormat("yyyy-MM-dd") + ".zip"
+      );
     });
+
+    Promise.allSettled(promises)
+      .then((results) => {
+        console.log("All downloads completed");
+        saveToFile(today.toISO(), output_folder + "last_update.txt");
+      })
+      .catch((err) => {
+        console.log("Error downloading files", err);
+      });
+  }
 };
+
