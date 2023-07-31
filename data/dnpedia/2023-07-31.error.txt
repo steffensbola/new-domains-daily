@@ -1,1 +1,1 @@
-["https://dnpedia.com/tlds/ajax.php?columns=name,thedate,&ecf=zoneid,thedate&ecv=1224,2023-07-31&zone=training&rows=2000&page=1&cmd=added"]
+[]
