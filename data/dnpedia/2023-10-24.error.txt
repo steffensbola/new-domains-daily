@@ -1,1 +1,1 @@
-["https://dnpedia.com/tlds/ajax.php?columns=name,thedate,&ecf=zoneid,thedate&ecv=55,2023-10-24&zone=amsterdam&rows=2000&page=1&cmd=added","https://dnpedia.com/tlds/ajax.php?columns=name,thedate,&ecf=zoneid,thedate&ecv=272,2023-10-24&zone=com&rows=2000&page=40&cmd=added"]
+[]
